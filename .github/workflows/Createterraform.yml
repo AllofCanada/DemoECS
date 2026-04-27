@@ -6,7 +6,7 @@ jobs:
         runs-on: [self-hosted, x64, linux]
         defaults:
             run:
-                working-directory: Demo2
+                working-directory: terraform
         steps:
             - name: checkout repo
               uses: actions/checkout@v4
