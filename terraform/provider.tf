@@ -9,7 +9,7 @@ terraform {
   }
   backend "s3"{
     bucket = "farhan-tf1281"
-    region = var.aws_region
+    region = "ca-central-1"
     key="vpc/terraform.tfstate"
   }
   
