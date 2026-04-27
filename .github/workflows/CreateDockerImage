@@ -1,0 +1,12 @@
+name: Create Docker Image
+on : workflow_dispatch
+
+jobs:
+  docker_image_build:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - name: docker image build
+        run: docker build -t flask .
