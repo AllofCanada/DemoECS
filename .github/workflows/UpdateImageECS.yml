@@ -1,0 +1,9 @@
+name: Update Image ECS
+on: workflow_dispatch
+
+jobs:
+    updated_ecs_image:
+        runs-on: [self-hosted, linux, x64]
+        permissions:
+            id-token: write
+            contents: read
