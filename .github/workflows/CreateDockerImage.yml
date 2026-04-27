@@ -28,7 +28,7 @@ jobs:
         run: |
           # Use the GitHub Run Number as a unique version
           VERSION=1.0.${{ github.run_number }}
-          REPO=541804384520.dkr.ecr.ca-central-1.amazonaws.com/ecs/demo
+          REPO=541804384520.dkr.ecr.ca-central-1.amazonaws.com/flask
           
           # Build once
           docker build -t $REPO:$VERSION -t $REPO:latest .
