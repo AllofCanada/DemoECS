@@ -4,13 +4,29 @@ on : workflow_dispatch
 jobs:
   docker_image_build:
     runs-on: [self-hosted, linux, x64]
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: docker image build
-        working-directory: ./Demo2
-        run: docker build -t flask .
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          aws-region: ca-central-1
+          role-session-name: GitHubActionsSession
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
 
-        
+      - name: Build and Push
+        working-directory: .Demo2/
+        run: |
+          docker build -t ecs/demo .
+          docker tag ecs/demo:latest 541804384520.dkr.ecr.ca-central-1.amazonaws.com/ecs/demo:latest
+          docker push 541804384520.dkr.ecr.ca-central-1.amazonaws.com/ecs/demo:latest
+
