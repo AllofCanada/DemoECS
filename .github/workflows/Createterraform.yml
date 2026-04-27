@@ -1,0 +1,21 @@
+name: Create Terraform Resources
+on: workflow_dispatch
+
+jobs:
+    create_terraform_resources:
+        runs-on: [self-hosted, x64, linux]
+        defaults:
+            run:
+                working-directory: Demo2
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v4
+
+            - name: Terraform Initialize
+              run: terraform init
+
+            - name: Terraform Plan
+              run: terraform plan
+
+            - name: Terraform Apply
+              run: terraform apply --auto-approve
