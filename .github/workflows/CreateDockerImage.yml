@@ -24,7 +24,7 @@ jobs:
 
 
       - name: Build and Push
-        working-directory: .Demo2/
+        working-directory: Demo2
         run: |
           docker build -t ecs/demo .
           docker tag ecs/demo:latest 541804384520.dkr.ecr.ca-central-1.amazonaws.com/ecs/demo:latest
