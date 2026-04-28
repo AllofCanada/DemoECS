@@ -9,7 +9,7 @@ resource "aws_sns_topic_subscription" "email_subscription" {
         "mohammedabdulfarhan17@gmail.com",
         "mafarhan1234@gmail.com"
     ])
-  topic_arn            = aws_sns_topic.topic_arn
+  topic_arn            = aws_sns_topic.arn
   protocol             = "email"
   endpoint             = each.value
   
