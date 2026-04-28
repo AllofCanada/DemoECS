@@ -11,7 +11,7 @@ resource "aws_lambda_function" "example" {
   function_name = "example_lambda_function"
   role          = "arn:aws:iam::541804384520:role/lambda"
   handler       = "s3.lambda_handler"
-  code_sha256   = data.archive_file.example.output_base64sha256
+  code_sha256   = data.archive_file.s3_lambda_code.output_base64sha256
 
   runtime = "python3.12"
 
