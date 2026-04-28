@@ -5,7 +5,7 @@ resource "aws_sns_topic" "user_updates" {
 
 
 resource "aws_sns_topic_subscription" "email_subscription" {
-    foreach = toset([
+    for_each = toset([
         "mohammedabdulfarhan17@gmail.com",
         "mafarhan1234@gmail.com"
     ])
